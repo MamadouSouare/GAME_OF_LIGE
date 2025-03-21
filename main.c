@@ -19,10 +19,6 @@ typedef struct 	Mouse {
 	Sint32 y;
 }Mouse;
 
-/*************************
- * N'oublie pas que tu as modifié les regles alors va les changer
- * 
- */
 
 /* Prototypes des fonctions */
 void 	sdl_print_error(char *msg);
@@ -119,6 +115,9 @@ int 	main(int argc, char *argv[])
 			{
 				switch (event.key.keysym.sym)
 				{
+				case SDLK_q:
+					game_loop = false;
+					break;
 				case SDLK_g:
 					grid_is_visible = !grid_is_visible;
 					break;
@@ -180,16 +179,6 @@ int 	main(int argc, char *argv[])
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /* Implémentation des fonctions qui seront appellées dans le main 
  * Load_Game() 		=> Initialisation du jeu (appellée une seule fois);
  * Update_Game() 	=> Mise à jour des données du jeu ;
@@ -224,11 +213,6 @@ void 	Draw_Game(SDL_Renderer *renderer)
 		Draw_Grid(renderer);
 	}
 }
-
-
-
-
-
 
 /* Cette fonction permet d'afficher une erreur */
 void 	sdl_print_error(char *msg)
